@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Webpage</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* Hover button with transition */
+    button.hover-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button.hover-button:hover {
+      background-color: #2c3e50;
+      transform: scale(1.1);
+    }
+
+    /* Fading animation */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .fade-element {
+      animation: fadeIn 2s ease-in;
+      margin-top: 30px;
+      font-size: 20px;
+    }
+
+    /* Sliding animation */
+    @keyframes slideIn {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+    }
+
+    .slide-element {
+      animation: slideIn 1s ease-out;
+      margin-top: 30px;
+      background-color: #f39c12;
+      color: white;
+      padding: 20px;
+      font-size: 20px;
+      display: inline-block;
+      border-radius: 8px;
+    }
+
+    /* Animated box */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #e74c3c;
+      margin-top: 30px;
+      transition: transform 1s;
+    }
+
+    .animate {
+      transform: rotate(360deg);
+    }
+
+    /* Modal styles */
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 200px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .modal-content {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Button with hover effect -->
+  <button class="hover-button">Hover over me</button>
+
+  <!-- Fading element -->
+  <div class="fade-element">
+    This content will fade in.
+  </div>
+
+  <!-- Sliding element -->
+  <div class="slide-element">
+    This content will slide in.
+  </div>
+
+  <!-- Animated Box -->
+  <button id="animateBtn" onclick="startAnimation()">Click to Animate</button>
+  <div id="animatedBox" class="box"></div>
+
+  <!-- Modal with toggle animation -->
+  <button onclick="toggleModal()">Toggle Modal</button>
+  <div id="myModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="toggleModal()">X</span>
+      This is a modal window!
+    </div>
+  </div>
+
+  <script>
+    // Function to calculate the area of a rectangle
+    function calculateArea(length, width) {
+      return length * width;
+    }
+
+    // Example usage of the function with parameters and return value
+    let area = calculateArea(5, 10);
+    console.log('Area of rectangle:', area);  // 50
+
+    // Function demonstrating local and global scope
+    let globalVar = "I am global";
+
+    function demonstrateScope() {
+      let localVar = "I am local";
+      console.log(globalVar);  // Accessible
+      console.log(localVar);   // Accessible
+    }
+
+    demonstrateScope();
+    console.log(globalVar);  // Accessible
+    // console.log(localVar);  // Error: localVar is not defined outside the function
+
+    // Function to toggle modal visibility
+    function toggleModal() {
+      const modal = document.getElementById("myModal");
+      modal.classList.toggle("hidden");
+    }
+
+    // Function to trigger animation on the box
+    function startAnimation() {
+      const box = document.getElementById("animatedBox");
+      box.classList.add("animate");
+      
+      // Reset animation after it completes
+      setTimeout(() => {
+        box.classList.remove("animate");
+      }, 2000);  // Duration of the animation
+    }
+  </script>
+
+</body>
+</html>
